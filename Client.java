@@ -31,13 +31,9 @@ public class Client {
       Scanner scanner = new Scanner(System.in);
       while (socket.isConnected()) {
         String messageToSend = scanner.nextLine();
-        // if (messageToSend == "/exit") {
-        //   closeEverything(socket, bufferedReader, bufferedWriter);
-        // }
-        bufferedWriter.write(username + ": " + messageToSend);
+        bufferedWriter.write(messageToSend);
         bufferedWriter.newLine();
         bufferedWriter.flush();
-        // scanner.close();
       }
     } catch (IOException e) {
       closeEverything(socket, bufferedReader, bufferedWriter);
@@ -99,7 +95,6 @@ public class Client {
       Client client = new Client(socket, username);
       client.listenForMessage();
       client.sendMessage();
-      // scanner.close();
     } catch (IOException e) {
       e.printStackTrace();
     }
